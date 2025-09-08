@@ -8,17 +8,15 @@
                         ranges,
                         sales, pop up stores and more</p>
                 </div>
-                <form class="email__form" action="">
-                    <Input :placeholder="'your@email.com'" :type="'email'" />
-                    <Button :text="'Sign up'" :variant="'dark'" />
-                </form>
+                <div class="email__form">
+                    <JoinForm />
+                </div>
             </div>
         </div>
     </section>
 </template>
 <script setup>
-import Input from '../Input.vue';
-import Button from '../Button.vue';
+import JoinForm from '../JoinForm.vue';
 </script>
 <style scoped>
 @import url(../../styles/join.css);
@@ -42,6 +40,10 @@ import Button from '../Button.vue';
     .email__text {
         font-size: 14px;
         text-align: start;
+    }
+
+    .email__form {
+        max-width: 450px;
     }
 }
 </style>
