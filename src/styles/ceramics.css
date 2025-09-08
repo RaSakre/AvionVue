@@ -1,0 +1,43 @@
+.ceramics {
+    padding: 80px 0px 60px 0px;
+}
+
+.ceramics__heading {
+    font-family: 'Clash-Display';
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 100%;
+    color: var(--mainColor);
+}
+
+.ceramics__item-textcontent {
+    margin-top: 24px;
+}
+
+
+.ceramics__item-title {
+    font-family: 'Clash-Display';
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--mainColor);
+    line-height: 140%;
+    margin-bottom: 8px;
+}
+
+.ceramics__item-price {
+    font-family: 'Satoshi';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--mainColor);
+}
+
+.ceramics__button-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.ceramics__img {
+    width: 100%;
+    object-fit: cover;
+}

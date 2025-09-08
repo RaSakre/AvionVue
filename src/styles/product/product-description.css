@@ -1,0 +1,52 @@
+.product__about {
+    margin-bottom: 54px;
+}
+
+@media (max-width: 575px) {
+    .product__about {
+        margin-bottom: 20px;
+    }
+}
+
+.product__title {
+    font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
+    font-family: "Clash-Display";
+    line-height: 100%;
+    color: var(--mainColor);
+    margin-bottom: 13px;
+}
+
+.product__price {
+    font-family: "Satoshi";
+    font-size: 24px;
+    line-height: 100%;
+    color: #12131a;
+}
+
+.product__description {
+    margin-bottom: 35px;
+}
+
+.product .description__title {
+    font-family: "Clash-Display";
+    font-size: 16px;
+    line-height: 100%;
+    color: var(--mainColor);
+    margin-bottom: 16px;
+}
+
+.product .description__text {
+    font-family: "Satoshi";
+    font-size: 16px;
+    line-height: 100%;
+    color: var(--mainColor);
+    margin-bottom: 20px;
+}
+
+.product .description__list {
+    padding-left: 30px;
+}
+
+.product .description__item {
+    list-style: disc;
+}

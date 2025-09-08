@@ -1,0 +1,48 @@
+.product__dimensions {
+    max-width: 241px;
+    margin-bottom: 22px;
+}
+
+@media (max-width: 575px) {
+    .product__dimensions {
+        max-width: none;
+        margin-bottom: 32px;
+    }
+}
+
+.product .dimensions__title {
+    font-family: "Clash-Display";
+    font-size: 16px;
+    line-height: 100%;
+    color: var(--mainColor);
+    margin-bottom: 28px;
+}
+
+.product .dimensions__metrics {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product .metrics__height {
+    position: relative;
+}
+
+.product .metrics__width {
+    position: relative;
+}
+
+.product .metrics__title {
+    font-family: "Clash-Display";
+    font-size: 14px;
+    line-height: 100%;
+    color: var(--mainColor);
+    margin-bottom: 12px;
+}
+
+.product .metrics__value {
+    font-family: "Satoshi";
+    font-size: 16px;
+    line-height: 100%;
+    color: var(--mainColor);
+}
+

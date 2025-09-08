@@ -1,0 +1,43 @@
+<template>
+    <button class="button" :class="[variant && `button--${variant}`]">{{ text }}</button>
+</template>
+
+<script setup>
+const props = defineProps({
+    variant: {
+        type: String,
+        required: false,
+        default: ''
+    },
+    text: {
+        type: String,
+        required: true,
+        default: 'Button'
+    }
+})
+</script>
+
+<style scoped>
+    .button {
+    padding: 16px 32px;
+    font-family: 'Satoshi';
+    font-weight: 400;
+    background: #F9F9F9;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--mainColor);
+    align-self: start;
+    }
+    .button--lightDark {
+    background-color: rgba(249, 249, 249, 0.15);
+    color: #fff;
+    }
+    .button--dark {
+    background-color: var(--mainColor);
+    color: #fff;
+    }
+    .button--light {
+        background-color: #fff;
+        color: var(--mainColor);
+    }
+</style>
