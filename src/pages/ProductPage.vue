@@ -1,6 +1,6 @@
 <template>
     <Product />
-    <Products :sectionClass="'ceramics'" :products="ceramicsProducts" :heading="'You might also like'" />
+    <Products :products="productStore.products.slice(1, 5)"  :columns="4" :sectionClass="'new-ceramics'" :heading="'You might also like'"/>
     <Advantages />
     <Join />
 </template>
@@ -9,6 +9,7 @@ import Product from '../components/Product/Product.vue';
 import Products from '../components/Products/Products.vue';
 import Advantages from '../components/Advantages/Advantages.vue';
 import Join from '../components/Join/Join.vue';
-import { ceramicsProducts } from '../mockData/products';
+import { useProductsStore } from '../store/product';
+const productStore = useProductsStore()
 </script>
 <style scoped></style>

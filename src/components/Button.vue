@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="[variant && `button--${variant}`]">{{ text }}</button>
+  <button :style="[`align-self: ${basketStyle}`]" @click="emit('addToCart')" class="button" :class="[variant && `button--${variant}`]">{{ text }}</button>
 </template>
 
 <script setup>
@@ -14,8 +14,13 @@
       required: true,
       default: 'Button',
     },
-
+    basketStyle: {
+      type: String,
+      required: false,
+    }
   });
+
+  const emit = defineEmits(['addToCart'])
 </script>
 
 <style scoped>

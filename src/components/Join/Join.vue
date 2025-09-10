@@ -16,10 +16,50 @@
     </section>
 </template>
 <script setup>
-import JoinForm from '../JoinForm.vue';
+import JoinForm from './JoinForm.vue';
 </script>
 <style scoped>
-@import url(../../styles/join.css);
+.email {
+    padding: 52px 0px 65px 0px;
+    background: var(--emailBgColor);
+}
+
+.email__content {
+    padding: 68px 0px 54px 0px;
+    background-color: var(--emailContentColor);
+}
+
+.email__heading {
+    font-family: 'Clash-Display';
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 140%;
+    color: var(--mainColor);
+}
+
+.email__text {
+    font-family: 'Satoshi';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--mainColor);
+    max-width: 471px;
+    text-align: center;
+}
+
+.email__text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 72px;
+}
+
+.email__form {
+    max-width: 472px;
+    margin: 0 auto;
+}
+
 @media (max-width: 767px) {
     .email {
         padding: 0px;

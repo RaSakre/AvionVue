@@ -1,13 +1,13 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="d-flex">
+  <form @submit.prevent="handleSubmit" class=" d-flex ">
     <Input class="flex-grow-1" :variant="classes.input" :placeholder="placeholder" :type="'email'" />
     <Button :variant="classes.button" type="submit" :text="'Sign up'" />
   </form>
 </template>
 
 <script setup>
-  import Input from '../components/Input.vue';
-  import Button from '../components/Button.vue';
+  import Input from '../Input.vue';
+  import Button from '../Button.vue';
 
   const props = defineProps({
     variant: {
