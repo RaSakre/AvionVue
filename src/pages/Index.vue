@@ -8,7 +8,7 @@
               <h1 class="hero-section__title">The furniture brand for the future, with timeless designs</h1>
             </div>
             <div class="hero-section__left-bottom">
-              <router-link to="/all-products">
+              <router-link to="/products">
                 <Button :text="'View collection'" :variant="'lightDark'" />
               </router-link>
               <p class="hero-section__text">

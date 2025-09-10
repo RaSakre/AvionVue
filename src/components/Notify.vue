@@ -27,7 +27,7 @@
   watch(
     () => route.path,
     (newPath) => {
-      isProductPage.value = newPath.includes('/product');
+      isProductPage.value = newPath.includes('/products');
     }
   );
 </script>

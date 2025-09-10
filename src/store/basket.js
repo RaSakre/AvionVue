@@ -14,12 +14,27 @@ export const useBasketStore = defineStore("basket", () => {
             basket.value.push({...prod, newPrice: prod.price, quantity});
         }
     }
+
+    const hasInBasket = (id) => {
+        return basket.value.some((item) => item.id === id);
+    }
+
+    const changeProductQuantity = (id, quantity) => {
+        const product = basket.value.find((item) => item.id === id);
+        if (product) {
+            product.quantity = quantity;
+            product.newPrice = product.price * quantity;
+        }
+    }
+
     const totalPrice = computed(() => {
         return basket.value.reduce((total, item) => total + item.newPrice, 0);
     })
     return {
         basket,
         addProduct,
-        totalPrice
+        totalPrice,
+        hasInBasket,
+        changeProductQuantity
     }
 })

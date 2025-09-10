@@ -7,7 +7,7 @@
                 <nav class="header__down-content-menu">
                     <ul class="header__menu-list">
                         <li class="header__menu-list-item">
-                            <router-link to="/product" class="header__menu-list-link">Product</router-link>
+                            <router-link to="/products" class="header__menu-list-link">Product</router-link>
                         </li>
                         <li class="header__menu-list-item">
                             <a class="header__menu-list-link" href="#">Ceramics</a>

@@ -1,70 +1,86 @@
 <template>
-  <div style="display: flex; gap: 22px;" class="col-lg-4">
+  <div style="display: flex; gap: 22px">
     <h6 id="amount" class="amount__title">{{ amount }}</h6>
     <div class="stepper__display">
       <button class="stepper__button" @click="emit('onDecrement')">-</button>
       <span class="stepper__value">{{ quantity }}</span>
-      <button class="stepper__button" @click="emit('onIncrement')">+</button>
+      <button :disabled="quantity >= max" class="stepper__button" @click="emit('onIncrement')">+</button>
     </div>
   </div>
 </template>
 <script setup>
-const props = defineProps({
-  quantity: {
-    type: Number,
-    required: true,
-    default: 1,
-  },
-  amount: {
-    type: String,
-    required: false,
-  }
-});
+  const props = defineProps({
+    quantity: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
+    amount: {
+      type: String,
+      required: false,
+    },
+    max: {
+      type: Number,
+      required: false,
+      default: 100,
+    },
+  });
 
-const emit = defineEmits(['onIncrement', 'onDecrement']);
-
+  const emit = defineEmits(['onIncrement', 'onDecrement']);
 </script>
 
 <style scoped>
-.amount__stepper {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  background-color: #f9f9f9;
-}
-
-@media (max-width: 575px) {
   .amount__stepper {
-    min-height: 80px;
-    gap: 0px;
-    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    background-color: #f9f9f9;
   }
-}
 
-.amount__title {
-  font-family: "Clash-Display";
-  font-size: 16px;
-  line-height: 100%;
-  color: var(--mainColor);
-  align-self: center;
-}
+  .amount__error {
+    color: #ff0000;
+    font-family: 'Satoshi';
+    font-size: 14px;
+    line-height: 150%;
+  }
 
-@media (max-width: 575px) {
+  @media (max-width: 575px) {
+    .amount__stepper {
+      min-height: 80px;
+      gap: 0px;
+      justify-content: center;
+    }
+  }
+
+  .stepper__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   .amount__title {
-    align-self: flex-start;
+    font-family: 'Clash-Display';
+    font-size: 16px;
+    line-height: 100%;
+    color: var(--mainColor);
+    align-self: center;
   }
-}
 
-.stepper__button {
-  font-family: "Satoshi";
-  font-size: 16px;
-  line-height: 100%;
-  color: var(--mainColor);
-}
+  @media (max-width: 575px) {
+    .amount__title {
+      align-self: flex-start;
+    }
+  }
 
-.stepper__display {
-  display: flex;
-  align-items: center;
-  gap: 33px;
-}
+  .stepper__button {
+    font-family: 'Satoshi';
+    font-size: 16px;
+    line-height: 100%;
+    color: var(--mainColor);
+  }
+
+  .stepper__display {
+    display: flex;
+    align-items: center;
+    gap: 33px;
+  }
 </style>

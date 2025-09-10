@@ -6,10 +6,9 @@ import AllProductsPage from '../pages/AllProductsPage.vue'
 
 const routes = [
     { path: '/', component: Index },
-    {path: '/product', component: ProductPage},
-    {path: '/product/:id', component: ProductPage},
+    {path: '/products', component: AllProductsPage},
+    {path: '/products/:id', component: ProductPage},
     {path: '/basket', component: BasketPage},
-    {path: '/all-products', component: AllProductsPage},
 ]
 
 const router = createRouter({
