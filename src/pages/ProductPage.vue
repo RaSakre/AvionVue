@@ -1,6 +1,7 @@
 <template>
     <Product />
-    <Products :products="productStore.products.slice(1, 5)"  :columns="4" :sectionClass="'new-ceramics'" :heading="'You might also like'"/>
+    <Products :products="productStore.products" :columns="4" :initialCount="4" :sectionClass="'new-ceramics'"
+        :heading="'You might also like'" />
     <Advantages />
     <Join />
 </template>

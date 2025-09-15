@@ -7,7 +7,8 @@
                         <h2 class="modal-auth-logo">Avion</h2>
                         <div class="modal-auth-greetings">
                             <h3>Welcome to Avion!</h3>
-                            <p>Already have an account? <button @click="isRegisterModal = !isRegisterModal" style="text-decoration: underline;">Log in</button></p>
+                            <p>Already have an account? <button @click="isRegisterModal = !isRegisterModal"
+                                    style="text-decoration: underline;">Log in</button></p>
                         </div>
                         <form @submit.prevent="handleRegisterSubmit" action="" class="modal-auth-form">
                             <div class="row row-gap-3 mb-4">
@@ -35,7 +36,10 @@
                                     </div>
                                 </label>
                             </div>
-                            <Button :disabled="!isValid" type="submit" :text="'Create an account'" :variant="'dark'" />
+                            <Button :disabled="!isValid" type="submit" :text="'Create an account'" :variant="'dark'"
+                                style="margin-bottom: 10px;" />
+                            <p>Already have an account? <button @click="isRegisterModal = !isRegisterModal"
+                                    style="text-decoration: underline;">Log in</button></p>
                         </form>
                         <div>
                             <button @click="close">Закрыть</button>

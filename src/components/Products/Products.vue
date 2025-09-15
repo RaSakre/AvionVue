@@ -2,15 +2,15 @@
   <section :class="[sectionClass === 'new-ceramics' ? 'ceramics' : 'products']">
     <div class="container">
       <h3 class="product__heading mb-4">{{ heading }}</h3>
-      <ul class="row row-gap-3 mb-4">
-        <template v-for="(product, index) in products" :key="product.id">
+      <ul class="row row-gap-3 mb-4 gx-4">
+        <template v-for="(product, index) in displayedProducts" :key="product.id">
           <li :class="columnsClass(index)">
             <ProductLink :product="product" :index="index" :columns="columns" />
           </li>
         </template>
       </ul>
       <div class="product__button-wrapper">
-        <Button :text="'View collection'" />
+        <Button v-if="!isNeedToStop" @click="loadMore" :text="'View collection'" />
       </div>
     </div>
   </section>
@@ -18,6 +18,7 @@
 <script setup>
 import Button from '../UI/Button.vue';
 import ProductLink from './ProductLink.vue';
+import { computed, ref } from 'vue';
 const props = defineProps({
   products: {
     type: Array,
@@ -42,7 +43,29 @@ const props = defineProps({
     required: false,
     default: 0,
   },
+  initialCount: {
+    type: Number,
+    required: false,
+    default: 3,
+  }
 });
+
+
+const visibleCount = ref(props.initialCount);
+const displayedProducts = computed(() => {
+  return props.products.slice(0, visibleCount.value);
+})
+
+const loadMore = () => {
+  visibleCount.value += props.columns;
+}
+
+const isNeedToStop = computed(() => {
+  return displayedProducts.value.length >= 12
+})
+
+
+
 
 const columnsClass = (index) => {
   if (props.columnFull) {

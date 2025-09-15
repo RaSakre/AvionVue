@@ -7,6 +7,8 @@ export const useProductsStore = defineStore('products', () => {
   const displayFilteredProducts = ref([])
   const limit = ref(20);
   const isMaxLimit = ref(false)
+  const noFound = ref(false)
+  const categorySavedUrl = ref(`https://dummyjson.com/products?limit=${limit.value}`)
 
   const fetchProducts = async () => {
     const response = await fetch(`https://dummyjson.com/products?limit=${limit.value}`);
@@ -26,6 +28,7 @@ export const useProductsStore = defineStore('products', () => {
         const data = await response.json();
         filteredProducts.value = data.products;
         updateDisplayedProducts()
+        categorySavedUrl.value = categoryUrl
         if (filteredProducts.value.length < limit.value) {
           isMaxLimit.value = true;
         }
@@ -44,18 +47,20 @@ export const useProductsStore = defineStore('products', () => {
     displayFilteredProducts.value = filteredProducts.value;
   };
 
-  const loadMoreProducts = () => {
-    limit.value += 20;
+  const loadMoreProducts = (loadValue) => {
+    limit.value += loadValue;
     fetchProducts();
   }
 
   const filterByPrice = (minPrice, maxPrice) => {
     if (minPrice && maxPrice) {
-      filteredProducts.value = products.value.filter(product => product.price >= minPrice && product.price <= maxPrice);
-      updateDisplayedProducts()
+      displayFilteredProducts.value = filteredProducts.value.filter(product => product.price >= minPrice && product.price <= maxPrice);
+      noFound.value = false
+      if (displayFilteredProducts.value.length === 0) {
+        noFound.value = true
+      }
     } else {
-      filteredProducts.value = products.value;
-      updateDisplayedProducts()
+      filterByCategory(categorySavedUrl.value)
     }
   }
   return {
@@ -67,6 +72,7 @@ export const useProductsStore = defineStore('products', () => {
     updateDisplayedProducts,
     loadMoreProducts,
     filterByPrice,
-    isMaxLimit
+    isMaxLimit,
+    noFound
   };
 });

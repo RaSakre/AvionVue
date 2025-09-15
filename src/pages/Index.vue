@@ -25,10 +25,10 @@
     </div>
   </section>
   <Advantages />
-  <Products :sectionClass="'new-ceramics'" :heading="'New Ceramics'" :columns="4"
-    :products="productsStore.products.slice(0, 4)" />
-  <Products :sectionClass="'products'" :heading="'Our popular products'" :columns="3"
-    :products="productsStore.products.slice(0, 3)" />
+  <Products :sectionClass="'new-ceramics'" :heading="'New Ceramics'" :columns="4" :products="productsStore.products"
+    :initialCount="4" />
+  <Products :sectionClass="'products'" :heading="'Our popular products'" :columns="3" :products="productsStore.products"
+    :initialCount="3" />
   <Join />
   <section class="about">
     <div class="container container__p-0">
@@ -62,6 +62,7 @@ import Join from '../components/Join/Join.vue';
 import Button from '../components/UI/Button.vue';
 import { useProductsStore } from '../store/product';
 const productsStore = useProductsStore();
+
 </script>
 <style scoped>
 .hero-section {
@@ -73,7 +74,6 @@ const productsStore = useProductsStore();
   flex-direction: column;
   background: var(--heroBgColor);
   height: 100%;
-  /* flex: 0 1 58.46%; */
   padding: 60px 0px 60px 60px;
   flex-wrap: nowrap;
 
