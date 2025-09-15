@@ -42,15 +42,12 @@
 <script setup>
 import ProductsFilerts from '../components/Products/ProductsFilerts.vue';
 import ProductLink from '../components/Products/ProductLink.vue';
-import Button from '../components/UI/Button.vue';
-import { useFiltersStore } from '../store/filters';
+import Button from '../components/UI/Button.vue';import { useFiltersStore } from '../store/filters';
 import { useProductsStore } from '../store/product';
-import { onMounted } from 'vue';
-const filtersStore = useFiltersStore();
+
+
 const productsStore = useProductsStore()
-onMounted(() => {
-  filtersStore.fetchFilters()
-})
+
 const onFilter = (categoryUrl) => {
   productsStore.filterByCategory(categoryUrl)
 }

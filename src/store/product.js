@@ -9,6 +9,17 @@ export const useProductsStore = defineStore('products', () => {
   const isMaxLimit = ref(false)
   const noFound = ref(false)
   const categorySavedUrl = ref(`https://dummyjson.com/products?limit=${limit.value}`)
+  
+  const filters = ref({
+    category: 'all',
+    price: 'all',
+    sort: 'all',
+    search: '',
+    pagination: {
+      limit: 20,
+      page: 1
+    }
+  })
 
   const fetchProducts = async () => {
     const response = await fetch(`https://dummyjson.com/products?limit=${limit.value}`);

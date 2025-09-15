@@ -1,6 +1,8 @@
 <template>
   <router-link :to="`/products/${product.id}`" :id="[product.title.includes('Sofa') ? 'product1' : '']">
-    <img class="product__img" :src="product.thumbnail" :alt="product.alt" />
+    <div class="product__item-image">
+      <img :src="product.thumbnail" :alt="product.alt" />
+    </div>
     <div class="product__item-textcontent">
       <h6 class="product__item-title">{{ product.title }}</h6>
       <p class="product__item-price">{{ product.price + '$' }}</p>
@@ -41,7 +43,11 @@
     color: var(--mainColor);
   }
 
-  .product__img {
+  .product__item-image {
+    height: 300px;
+  }
+
+  .product__item-image img {
     width: 100%;
     object-fit: cover;
   }
