@@ -16,7 +16,7 @@
   </section>
 </template>
 <script setup>
-import Button from '../Button.vue';
+import Button from '../UI/Button.vue';
 import ProductLink from './ProductLink.vue';
 const props = defineProps({
   products: {

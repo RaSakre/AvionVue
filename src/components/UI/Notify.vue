@@ -1,10 +1,10 @@
 <template>
   <div :class="[isProductPage ? 'notify' : 'notify-hidden']" v-if="showNotify">
     <div class="notify__center">
-      <img src="../assets/notify/car.svg" alt="" />
+      <img src="../../assets/notify/car.svg" alt="" />
       <p class="notify__text">Free delivery on all orders over £50 with code easter checkout</p>
     </div>
-    <img style="cursor: pointer" @click="handleClick" src="../assets/notify/close.svg" alt="" />
+    <img style="cursor: pointer" @click="handleClick" src="../../assets/notify/close.svg" alt="" />
   </div>
 </template>
 <script setup>

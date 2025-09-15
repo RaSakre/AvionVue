@@ -7,7 +7,7 @@
                 <nav class="header__down-content-menu">
                     <ul class="header__menu-list">
                         <li class="header__menu-list-item">
-                            <router-link to="/products" class="header__menu-list-link">Product</router-link>
+                            <router-link to="/products" class="header__menu-list-link">Products</router-link>
                         </li>
                         <li class="header__menu-list-item">
                             <a class="header__menu-list-link" href="#">Ceramics</a>
@@ -34,8 +34,8 @@
     </header>
 </template>
 <script setup>
-import HeaderUp from '../components/HeadersComps/HeaderUp.vue';
-import Notify from '../components/Notify.vue';
+import HeaderUp from './HeaderUp.vue';
+import Notify from '../components/UI/Notify.vue';
 
 </script>
 <style scoped>

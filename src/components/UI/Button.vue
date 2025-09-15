@@ -47,4 +47,8 @@
     background-color: #fff;
     color: var(--mainColor);
   }
+  .button:disabled {
+    background-color: #e0e0e0;
+    color: #828282;
+  }
 </style>

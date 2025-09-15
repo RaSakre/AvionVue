@@ -23,15 +23,15 @@
   <section class="products">
     <div class="container">
       <div class="row mt-5">
-        <ProductsFilerts @onFilter="onFilter" />
+        <ProductsFilerts @onFilter="onFilter" @filterPrice="filterPrice" />
         <div class="col-lg-9">
           <ul class="products__list-items">
-            <li v-for="(product, index) in products" :key="product.id">
+              <li v-for="(product, index) in productsStore.displayFilteredProducts" :key="product.id">
               <ProductLink :product="product" :index="index" :columns="9" />
             </li>
           </ul>
           <div class="text-center mt-5 mb-5">
-            <Button @click="loadMore" :text="'Load more'" />
+            <Button v-if="!productsStore.isMaxLimit" @click="loadMore"  :text="'Load more'" />
           </div>
         </div>
       </div>
@@ -39,50 +39,28 @@
   </section>
 </template>
 <script setup>
-  import ProductsFilerts from '../components/AllProducts/ProductsFilerts.vue';
+  import ProductsFilerts from '../components/Products/ProductsFilerts.vue';
   import ProductLink from '../components/Products/ProductLink.vue';
-  import Button from '../components/Button.vue';
-  import {onMounted, ref, watch} from 'vue';
-
-  const products = ref([]);
-  const filters = ref({
-    category: '',
-    limit: 10,
-  });
-
-  const onFilter = (categoryUrl) => {
-    filters.value.category = categoryUrl;
-  };
-
-  const fetchProducts = async (url = 'https://dummyjson.com/products') => {
-    try {
-      const response = await fetch(`${url}?limit=${filters.value.limit}`);
-      const data = await response.json();
-      products.value = data.products;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const loadMore = () => {
-    filters.value.limit += 20;
-  };
-
+  import Button from '../components/UI/Button.vue';
+  import { useFiltersStore } from '../store/filters';
+  import { useProductsStore } from '../store/product';
+  import {onMounted} from 'vue';
+  const filtersStore = useFiltersStore();
+  const productsStore = useProductsStore()
   onMounted(() => {
-    fetchProducts();
-  });
+    filtersStore.fetchFilters()
+  })
+const onFilter = (categoryUrl) => {
+  productsStore.filterByCategory(categoryUrl)
+}
 
-  watch(
-    () => filters.value,
-    (filters) => {
-        if (filters.category) {
-            fetchProducts(filters.category);
-        } else {
-            fetchProducts();
-        }
-    },
-    {deep: true}
-  );
+const filterPrice = (min, max) => {
+  productsStore.filterByPrice(min, max)
+}
+
+const loadMore = () => {
+  productsStore.loadMoreProducts()
+}
 </script>
 <style scoped>
   .hero-section__content {
@@ -112,6 +90,10 @@
 
   .select-filters {
     display: none;
+  }
+
+  .products {
+    padding: 0px 0px 20px 0px;
   }
 
   .products__list-items {

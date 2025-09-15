@@ -26,14 +26,16 @@
           </div>
           <p class="taxes">Taxes and shipping are calculated at checkout</p>
         </div>
-        <Button :basketStyle="'end'" :variant="'dark'" :text="'Go to checkout'" />
+        <router-link to="/payment">
+          <Button :disabled="basketStore.basket.length === 0" :basketStyle="'end'" :variant="'dark'" :text="'Go to checkout'" />
+        </router-link>
       </div>
     </div>
   </section>
 </template>
 <script setup>
   import BasketItem from '../components/BasketItems/BasketItem.vue';
-  import Button from '../components/Button.vue';
+import Button from '../components/UI/Button.vue';
   import {useBasketStore} from '../store/basket';
   const basketStore = useBasketStore();
 </script>

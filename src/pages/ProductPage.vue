@@ -5,9 +5,9 @@
     <Join />
 </template>
 <script setup>
-import Product from '../components/Product/Product.vue';
+import Product from '../components/Products/Product.vue';
 import Products from '../components/Products/Products.vue';
-import Advantages from '../components/Advantages/Advantages.vue';
+import Advantages from '../Sections/Advantages.vue';
 import Join from '../components/Join/Join.vue';
 import { useProductsStore } from '../store/product';
 const productStore = useProductsStore()

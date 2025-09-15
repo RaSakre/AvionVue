@@ -56,10 +56,10 @@
   </section>
 </template>
 <script setup>
-import Advantages from '../components/Advantages/Advantages.vue';
+import Advantages from '../Sections/Advantages.vue';
 import Products from '../components/Products/Products.vue';
 import Join from '../components/Join/Join.vue';
-import Button from '../components/Button.vue';
+import Button from '../components/UI/Button.vue';
 import { useProductsStore } from '../store/product';
 const productsStore = useProductsStore();
 </script>

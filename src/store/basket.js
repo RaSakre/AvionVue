@@ -27,14 +27,23 @@ export const useBasketStore = defineStore("basket", () => {
         }
     }
 
+    const deleteProduct = (id) => {
+        basket.value = basket.value.filter((item) => item.id !== id);
+    }
+
     const totalPrice = computed(() => {
         return basket.value.reduce((total, item) => total + item.newPrice, 0);
     })
+    const clearBasket = () => {
+        basket.value = [];
+    }
     return {
         basket,
         addProduct,
         totalPrice,
         hasInBasket,
-        changeProductQuantity
+        changeProductQuantity,
+        deleteProduct,
+        clearBasket
     }
 })
