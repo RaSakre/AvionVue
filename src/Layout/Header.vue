@@ -43,8 +43,8 @@
                 fill="#2A254B" />
             </svg>
           </a>
-          <div v-else>
-            <p>{{ authStore.userState.email }}</p>
+          <div class="header__user" v-else>
+            <router-link style="color: var(--mainColor);" to="/profile">{{ authStore.userName }}</router-link>
             <button @click="authStore.logout">Выйти</button>
           </div>
           <ModalAuth :isOpen="isModalOpen" @close="toggleModal" />
@@ -104,10 +104,6 @@
   };
 
   const toggleModal = () => {
-    if (authStore.isAuth) {
-      return;
-    }
-
     isModalOpen.value = !isModalOpen.value;
   };
 </script>
@@ -131,6 +127,12 @@
   .header {
     padding: 20px 28px;
   }
+
+.header__user {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
   .header__down-content {
     max-width: 675px;

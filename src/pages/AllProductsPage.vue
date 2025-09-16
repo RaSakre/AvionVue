@@ -42,7 +42,7 @@
 <script setup>
 import ProductsFilerts from '../components/Products/ProductsFilerts.vue';
 import ProductLink from '../components/Products/ProductLink.vue';
-import Button from '../components/UI/Button.vue';import { useFiltersStore } from '../store/filters';
+import Button from '../components/UI/Button.vue';
 import { useProductsStore } from '../store/product';
 
 

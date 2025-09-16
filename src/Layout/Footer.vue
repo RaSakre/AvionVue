@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="footer__copyright">
-                <p class="footer__copyright-text">Copyright 2022 Avion LTD</p>
+                <p class="footer__copyright-text">Copyright 2025 Avion LTD</p>
                 <div class="footer__copyright-links">
                     <a class="footer__copyright-link" href="#">
                         <img src="../assets/footerIcons/linkedin.svg" alt="">

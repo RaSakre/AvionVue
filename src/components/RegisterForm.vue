@@ -44,14 +44,16 @@
         </div>
       </label>
     </div>
-    <Button type="submit" :text="'Create an account'" :variant="'dark'" style="margin-bottom: 10px" />
+    <Button :disabled="!isValid" type="submit" :text="'Create an account'" :variant="'dark'" style="margin-bottom: 10px" />
+    <p style="color: red;">{{ authStore.errorText }}</p>
   </form>
 </template>
 
 <script setup>
   import {ref, computed} from 'vue';
   import Button from './UI/Button.vue';
-
+  import { useAuthStore } from '../store/auth';
+  const authStore = useAuthStore();
   const emit = defineEmits(['submit']);
 
   const email = ref('');
