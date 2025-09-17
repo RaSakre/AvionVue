@@ -6,7 +6,7 @@
             <p v-if="requiredDescription" class="cart__item-description">{{ product.description }}</p>
             <p class="cart__item-price">{{ product.price.toFixed(2) + '$' }}</p>
             <span>{{ `(${product.quantity})` }}</span>
-            <div @click="basketStore.deleteProduct(product.id)" class="delete-img">
+            <div v-if="requiredDelete" @click="basketStore.deleteProduct(product.id)" class="delete-img">
             <img  src="../../assets/basketitem/delete-2-svgrepo-com.svg" alt="">
         </div>
         </div>
@@ -34,9 +34,13 @@ const props = defineProps({
     imgSize: {
         type: String,
         required: false,
+    },
+    requiredDelete: {
+        type: Boolean,
+        required: false,
     }
 })
-console.log(props);
+
 
 
 </script>

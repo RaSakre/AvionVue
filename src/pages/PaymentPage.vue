@@ -50,13 +50,14 @@ const basketStore = useBasketStore();
 const selectedPayment = ref('card');
 const isModalOpen = ref(false)
 const emptyBasketText = ref('')
-const submit = () => {
+const submit = async () => {
     if (basketStore.basket.length === 0) {
         emptyBasketText.value = 'Корзина пустая'
         isModalOpen.value = true;
         return;
     }
     isModalOpen.value = true;
+    await basketStore.addBoughtProductsToFirestore()
     basketStore.clearBasket();
 }
 </script>

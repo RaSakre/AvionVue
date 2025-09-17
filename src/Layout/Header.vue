@@ -44,7 +44,7 @@
             </svg>
           </a>
           <div class="header__user" v-else>
-            <router-link style="color: var(--mainColor);" to="/profile">{{ authStore.userName }}</router-link>
+            <router-link style="color: var(--mainColor);" to="/profile">{{ authStore.userInfo?.username }}</router-link>
             <button @click="authStore.logout">Выйти</button>
           </div>
           <ModalAuth :isOpen="isModalOpen" @close="toggleModal" />

@@ -1,14 +1,18 @@
 <template>
     <div class="data">
         <h3>{{ title }}</h3>
-        <p v-if="!inputs[title.toLowerCase()]">{{ text }}</p>
-        <input @blur="handleBlur" @keydown.enter="handleEnterClick" v-focus type="text" placeholder="Location" v-if="inputs[title.toLowerCase()]">
-        <div @click="toggleInput(title.toLowerCase())" class="edit-button">
+        <p v-if="!inputs[fieldName]">{{ text }}</p>
+        <input v-model="inputValue" @blur="handleBlur" @keyup.backspace="handleBackspace"
+            @keydown.enter="handleEnterClick" v-focus type="text" :placeholder="placeholder" v-if="inputs[fieldName]">
+        <div @click="toggleInput(fieldName)" class="edit-button">
             <img src="../../assets/profile/edit-button-svgrepo-com.svg" alt="">
         </div>
     </div>
 </template>
 <script setup>
+import { ref, watch } from 'vue'
+import { useAuthStore } from '../../store/auth'
+const authStore = useAuthStore()
 const props = defineProps({
     title: {
         type: String,
@@ -26,16 +30,41 @@ const props = defineProps({
         type: Function,
         required: true
     },
+    placeholder: {
+        type: String,
+        required: false,
+    }
 })
+const emit = defineEmits(['update', 'delete']);
+const fieldName = props.title.toLowerCase()
+const inputValue = ref(authStore.userInfo?.[fieldName] || '');
+
+watch(() => authStore.userInfo?.[fieldName], (newValue) => {
+    inputValue.value = newValue || '';
+});
+
+function checkAndSubmitValues() {
+    const currentValue = authStore.userInfo?.[fieldName] || ''
+    const newValue = inputValue.value.trim()
+    if (newValue === currentValue || newValue === '') {
+        return;
+    }
+    emit('update', { field: fieldName, value: newValue })
+}
 
 const handleBlur = () => {
-    console.log('blur');
-    // FIREBASE LOGIC
+    checkAndSubmitValues()
 }
 
 const handleEnterClick = () => {
-    console.log('enter');
-    props.toggleInput(props.title.toLowerCase())
+    checkAndSubmitValues()
+    props.toggleInput(fieldName)
+}
+
+const handleBackspace = () => {
+    if (inputValue.value === '') {
+        emit('delete', fieldName)
+    }
 }
 
 const vFocus = {
