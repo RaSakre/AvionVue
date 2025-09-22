@@ -1,5 +1,5 @@
 <template>
-  <Notify />
+  <Notify v-if="!isNotify" />
   <header class="header">
     <div class="container">
       <div class="header__up-content">
@@ -17,6 +17,10 @@
         </div>
         <p class="header__avion">
           <router-link to="/" style="color: var(--mainColor)">Avion</router-link>
+        </p>
+
+        <p>
+          {{ authStore.isAuth }}
         </p>
         <div class="header__up-content-icons">
           <router-link to="/basket" id="basket" class="header__up-content-link">
@@ -44,7 +48,7 @@
             </svg>
           </a>
           <div class="header__user" v-else>
-            <router-link style="color: var(--mainColor);" to="/profile">{{ authStore.userInfo?.username }}</router-link>
+            <router-link style="color: var(--mainColor)" to="/profile">{{ authStore.userInfo?.username }}</router-link>
             <button @click="authStore.logout">Выйти</button>
           </div>
           <ModalAuth :isOpen="isModalOpen" @close="toggleModal" />
@@ -81,16 +85,17 @@
   </header>
 </template>
 <script setup>
-  import Notify from '../components/UI/Notify.vue';
-  import {computed, ref} from 'vue';
-  import {useBasketStore} from '../store/basket';
-  import {useAuthStore} from '../store/auth';
+  import Notify from '@/components/UI/Notify.vue';
+  import {computed, ref, onMounted} from 'vue';
+  import {useBasketStore} from '@/store/basket';
+  import {useAuthStore} from '@/store/auth';
   import {useRouter} from 'vue-router';
-  import ModalAuth from '../components/UI/ModalAuth.vue';
+  import ModalAuth from '@/components/UI/ModalAuth.vue';
 
   const router = useRouter();
   const basketStore = useBasketStore();
   const authStore = useAuthStore();
+  const isNotify = ref(false);
 
   const isModalOpen = ref(false);
 
@@ -106,6 +111,11 @@
   const toggleModal = () => {
     isModalOpen.value = !isModalOpen.value;
   };
+
+  onMounted(() => {
+    const isNotify = localStorage.getItem('notify') === 'closed';
+    isNotify.value = !isNotify;
+  });
 </script>
 <style scoped>
   @import url(../assets/styles/headerUp.css);
@@ -128,11 +138,11 @@
     padding: 20px 28px;
   }
 
-.header__user {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
+  .header__user {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
 
   .header__down-content {
     max-width: 675px;

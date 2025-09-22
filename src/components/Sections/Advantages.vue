@@ -15,10 +15,10 @@
 <script setup>
 import { ref } from 'vue';
 import { v4 as uuidv4 } from 'uuid'
-import checkMark from "../assets/advantages/Checkmark--outline.svg"
-import delivery from "../assets/advantages/Delivery.svg"
-import purchase from "../assets/advantages/Purchase.svg"
-import sprout from "../assets/advantages/Sprout.svg"
+import checkMark from "@/assets/advantages/Checkmark--outline.svg"
+import delivery from "@/assets/advantages/Delivery.svg"
+import purchase from "@/assets/advantages/Purchase.svg"
+import sprout from "@/assets/advantages/Sprout.svg"
 const advantages = ref([
     {
         id: uuidv4(),

@@ -5,7 +5,7 @@
       <ul class="row row-gap-3 mb-4 gx-4">
         <template v-for="(product, index) in displayedProducts" :key="product.id">
           <li :class="columnsClass(index)">
-            <ProductLink :product="product" :index="index" :columns="columns" />
+            <ProductCard :product="product" :index="index" :columns="columns" />
           </li>
         </template>
       </ul>
@@ -17,7 +17,7 @@
 </template>
 <script setup>
 import Button from '../UI/Button.vue';
-import ProductLink from './ProductLink.vue';
+import ProductCard from './ProductCard.vue';
 import { computed, ref } from 'vue';
 const props = defineProps({
   products: {

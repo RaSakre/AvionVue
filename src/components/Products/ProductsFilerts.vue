@@ -40,14 +40,14 @@
 </template>
 <script setup>
   import {onMounted, ref} from 'vue';
+  import {api} from '@api/services';
 
   const filters = ref([]);
 
   const emit = defineEmits(['onFilter', 'filterPrice']);
 
   const fetchFilters = async () => {
-    const response = await fetch('https://dummyjson.com/products/categories');
-    const data = await response.json();
+    const data = await api.products.getCategories();
     filters.value = data;
   };
 

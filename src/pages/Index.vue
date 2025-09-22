@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="hero-section__right col-md-6 col-lg-5">
-          <img class="hero-section__img" src="../assets/herosection/Right Image.png" alt="" />
+          <img class="hero-section__img" src="@/assets/herosection/Right Image.png" alt="" />
         </div>
       </div>
     </div>
@@ -49,18 +49,18 @@
           <Button :text="'Get in touch'" />
         </div>
         <div class="about__right">
-          <img class="about__img" src="../assets/about/Image.png" alt="">
+          <img class="about__img" src="@/assets/about/Image.png" alt="">
         </div>
       </div>
     </div>
   </section>
 </template>
 <script setup>
-import Advantages from '../Sections/Advantages.vue';
-import Products from '../components/Products/Products.vue';
-import Join from '../components/Join/Join.vue';
-import Button from '../components/UI/Button.vue';
-import { useProductsStore } from '../store/product';
+import Advantages from '@/components/Sections/Advantages.vue';
+import Products from '@/components/Products/Products.vue';
+import Join from '@/components/Sections/Join/Join.vue';
+import Button from '@/components/UI/Button.vue';
+import { useProductsStore } from '@/store/product';
 const productsStore = useProductsStore();
 
 </script>

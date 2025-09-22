@@ -6,11 +6,11 @@
     <Join />
 </template>
 <script setup>
-import Product from '../components/Products/Product.vue';
-import Products from '../components/Products/Products.vue';
-import Advantages from '../Sections/Advantages.vue';
-import Join from '../components/Join/Join.vue';
-import { useProductsStore } from '../store/product';
+import Product from '@/components/Products/Product.vue';
+import Products from '@/components/Products/Products.vue';
+import Advantages from '@/components/Sections/Advantages.vue';
+import Join from '@/components/Sections/Join/Join.vue';
+import { useProductsStore } from '@/store/product';
 const productStore = useProductsStore()
 </script>
 <style scoped></style>

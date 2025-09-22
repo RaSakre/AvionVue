@@ -13,6 +13,7 @@ export const useAuthStore = defineStore('auth', () => {
   const userState = ref(null);
   const userInfo = ref(null)
   const errorText = ref(null);
+
   const isAuth = computed(() => {
     return !!userState.value;
   });

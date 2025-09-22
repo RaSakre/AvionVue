@@ -1,5 +1,5 @@
 <template>
-  <div :class="[isProductPage ? 'notify' : 'notify-hidden']" v-if="showNotify">
+  <div :class="[isProductPage ? 'notify' : 'notify-hidden']">
     <div class="notify__center">
       <img src="../../assets/notify/car.svg" alt="" />
       <p class="notify__text">Free delivery on all orders over £50 with code easter checkout</p>
@@ -12,15 +12,15 @@
   import {useRoute} from 'vue-router';
   const route = useRoute();
   const isProductPage = ref(false);
-  const showNotify = ref(false);
+  // const showNotify = ref(false);
 
-  onMounted(() => {
-    const isClosed = localStorage.getItem('notify') === 'closed';
-    showNotify.value = !isClosed;
-  });
+  // onMounted(() => {
+  //   const isClosed = localStorage.getItem('notify') === 'closed';
+  //   showNotify.value = !isClosed;
+  // });
 
   const handleClick = () => {
-    showNotify.value = false;
+    // showNotify.value = false;
     localStorage.setItem('notify', 'closed');
   };
 

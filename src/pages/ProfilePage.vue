@@ -32,7 +32,7 @@
 <script setup>
 import { useAuthStore } from '../store/auth';
 import { useBasketStore } from '../store/basket';
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import ProfileData from '../components/UI/ProfileData.vue';
 import BasketProduct from '../components/BasketItems/BasketProduct.vue';
 import Modal from '../components/UI/Modal.vue';
@@ -40,11 +40,6 @@ import Modal from '../components/UI/Modal.vue';
 const authStore = useAuthStore()
 const basketStore = useBasketStore()
 
-watch(() => authStore.userState, (user) => {
-    if (user) {
-        basketStore.getBoughtProducts()
-    }
-})
 const isOpen = ref(false)
 
 console.log(basketStore.boughtProducts)
@@ -101,6 +96,11 @@ const confirm = async () => {
 const deleteField = (fieldName) => {
     authStore.deleteUserField(fieldName)
 }
+
+onMounted(() => {
+    console.log('onMounted')
+    basketStore.getBoughtProducts()
+})
 </script>
 <style scoped>
 .profile__usernames h2 {

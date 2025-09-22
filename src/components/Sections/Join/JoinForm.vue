@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import Input from '../UI/Input.vue';
-import Button from '../UI/Button.vue';
+import Input from '@/components/UI/Input.vue';
+import Button from '@/components/UI/Button.vue';
 
   const props = defineProps({
     variant: {

@@ -98,7 +98,7 @@
     </footer>
 </template>
 <script setup>
-import JoinForm from '../components/Join/JoinForm.vue';
+import JoinForm from '@/components/Sections/Join/JoinForm.vue';
 </script>
 <style scoped>
 .footer {
