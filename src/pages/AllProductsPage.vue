@@ -22,7 +22,6 @@
   </section>
   <section class="products">
     <div class="container">
-      <input type="text" v-model="search" @input="debouncedSearch" />
       <div class="row mt-5">
         <ProductsFilerts @onFilter="onFilter" @filterPrice="filterPrice" />
         <div class="col-lg-9">

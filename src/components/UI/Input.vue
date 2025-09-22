@@ -1,5 +1,7 @@
 <template>
   <input
+    @blur="$emit('blur')"
+    @input="$emit('input', $event.target.value)"
     :type="type"
     :placeholder="placeholder"
     class="input"
@@ -21,6 +23,7 @@
       default: '',
     },
   });
+  const emit = defineEmits(['blur', 'input']);
 </script>
 <style scoped>
   .input {
@@ -36,5 +39,9 @@
   }
   .input-dark::placeholder {
     color: #fff;
+  }
+  .input-black {
+    background: #424141;
+    color: #ffffff;
   }
 </style>
